@@ -10,5 +10,8 @@ prop_idempotent xs = quicksort (quicksort xs) == quicksort xs
 
 prop_sorted xs = snd $ foldr (\curr (lst, b) -> (curr, lst >= curr)) (last sxs, True) sxs
 				where sxs = quicksort xs :: [Int]
+			
+prop_maintainSize xs = length xs == (length $ quicksort xs)
+				where _ = xs :: [Int]
 
-tests = [("idempotent sort", quickCheck prop_idempotent), ("list is sorted", quickCheck prop_sorted)]
+tests = [("idempotent sort", quickCheck prop_idempotent), ("list is sorted", quickCheck prop_sorted), ("list maintains size", quickCheck prop_maintainSize)]
