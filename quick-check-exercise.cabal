@@ -13,13 +13,16 @@ author:              Kyle Bahr
 build-type:          Simple
 cabal-version:       >=1.8
 
-test-suite tests
-   type: exitcode-stdio-1.0
-   main-is: qc-exercise.hs
+test-suite qc-exercise 
+   type: detailed-0.9 
+   test-module: QCTests
+   hs-source-dirs: test 
    build-depends: base,
-                  QuickCheck
+                  Cabal,
+                  cabal-test-quickcheck,
+                  quick-check-exercise 
 
 library
-  -- exposed-modules:     
-  -- other-modules:       
+  hs-source-dirs: src
+  exposed-modules: Exercise     
   build-depends:       base >= 4.6
